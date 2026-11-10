@@ -7,7 +7,7 @@
 #   make dump      show the reset vector area of each image
 #   make clean
 
-SRC      := boot.s
+SRC      := boot.s constants.s
 OBJ      := boot.o
 ROM      := rom.bin
 # LO = even bytes -> D0-D7, HI = odd bytes -> D8-D15

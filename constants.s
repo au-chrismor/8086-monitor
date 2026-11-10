@@ -76,7 +76,52 @@
         .equ    LSR_DR,         0x01                            # receive data ready
         .equ    LSR_THRE,       0x20                            # transmit holding register empty
 
-# ---- DS1501 registers --------------------------------------------------------
+# ---- 8259A PIC registers ---------------------------------------------------
+        .equ    PIC1_CMD,       PIC1_BASE + 0 * PIC1_STRIDE     # First 8259A Command Port
+        .equ    PIC1_DATA,      PIC1_BASE + 1 * PIC1_STRIDE     # First 8259A Data Port
+        .equ    PIC2_CMD,       PIC2_BASE + 0 * PIC2_STRIDE     # Second 8259A Command Port
+        .equ    PIC2_DATA,      PIC2_BASE + 1 * PIC2_STRIDE     # Second 8259A Data Port
+
+# ---- 8237 DMA Controller registers -----------------------------------------
+        .equ    DMA1_START_0,   DMA1_BASE + 0 * DMA1_STRIDE     # Start Address Register channel 0/4
+        .equ    DMA1_COUNT_0,   DMA1_BASE + 1 * DMA1_STRIDE     # Count Register channel 0/4
+        .equ    DMA1_START_1,   DMA1_BASE + 2 * DMA1_STRIDE     # Start Address Register channel 1/4
+        .equ    DMA1_COUNT_1,   DMA1_BASE + 3 * DMA1_STRIDE     # Count Register channel 1/4
+        .equ    DMA1_START_2,   DMA1_BASE + 4 * DMA1_STRIDE     # Start Address Register channel 2/6 
+        .equ    DMA1_COUNT_2,   DMA1_BASE + 5 * DMA1_STRIDE     # Count Register channel 2/6
+        .equ    DMA1_START_3,   DMA1_BASE + 6 * DMA1_STRIDE     # Start Address Register channel 3/7  
+        .equ    DMA1_COUNT_3,   DMA1_BASE + 7 * DMA1_STRIDE     # Count Register channel 3/7
+        .equ    DMA1_STATUS,    DMA1_BASE + 8 * DMA1_STRIDE     # Status Register (Read)
+        .equ    DMA1_CMD,       DMA1_STATUS                     # Command Register (Write)
+        .equ    DMA1_REQ,       DMA1_BASE + 9 * DMA1_STRIDE     # Request Register
+        .equ    DMA1_SCMR,      DMA1_BASE + 10 * DMA1_STRIDE    # Single-Channel Mask Register
+        .equ    DMA1_MODE,      DMA1_BASE + 11 * DMA1_STRIDE    # Mode Register
+        .equ    DMA1_FFR,       DMA1_BASE + 12 * DMA1_STRIDE    # Flip-Flop Reset Register
+        .equ    DMA1_IMR,       DMA1_BASE + 13 * DMA1_STRIDE    # Intermediate Register (Read)
+        .equ    DMA1_MRR,       DMA1_IMR                        # Master Reset Register (Write)
+        .equ    DMA1_MSKR,      DMA1_BASE + 14 * DMA1_STRIDE    # Mask Reset Register
+        .equ    DMA1_MCMR,      DMA1_BASE + 15 * DMA1_STRIDE    # Multi-Channel Mask Register
+
+        .equ    DMA2_START_0,   DMA2_BASE + 0 * DMA2_STRIDE     # Start Address Register channel 0/4
+        .equ    DMA2_COUNT_0,   DMA2_BASE + 1 * DMA2_STRIDE     # Count Register channel 0/4
+        .equ    DMA2_START_1,   DMA2_BASE + 2 * DMA2_STRIDE     # Start Address Register channel 1/4
+        .equ    DMA2_COUNT_1,   DMA2_BASE + 3 * DMA2_STRIDE     # Count Register channel 1/4
+        .equ    DMA2_START_2,   DMA2_BASE + 4 * DMA2_STRIDE     # Start Address Register channel 2/6 
+        .equ    DMA2_COUNT_2,   DMA2_BASE + 5 * DMA2_STRIDE     # Count Register channel 2/6
+        .equ    DMA2_START_3,   DMA2_BASE + 6 * DMA2_STRIDE     # Start Address Register channel 3/7  
+        .equ    DMA2_COUNT_3,   DMA2_BASE + 7 * DMA2_STRIDE     # Count Register channel 3/7
+        .equ    DMA2_STATUS,    DMA2_BASE + 8 * DMA2_STRIDE     # Status Register (Read)
+        .equ    DMA2_CMD,       DMA2_STATUS                     # Command Register (Write)
+        .equ    DMA2_REQ,       DMA2_BASE + 9 * DMA2_STRIDE     # Request Register
+        .equ    DMA2_SCMR,      DMA2_BASE + 10 * DMA2_STRIDE    # Single-Channel Mask Register
+        .equ    DMA2_MODE,      DMA2_BASE + 11 * DMA2_STRIDE    # Mode Register
+        .equ    DMA2_FFR,       DMA2_BASE + 12 * DMA2_STRIDE    # Flip-Flop Reset Register
+        .equ    DMA2_IMR,       DMA2_BASE + 13 * DMA2_STRIDE    # Intermediate Register (Read)
+        .equ    DMA2_MRR,       DMA2_IMR                        # Master Reset Register (Write)
+        .equ    DMA2_MSKR,      DMA2_BASE + 14 * DMA2_STRIDE    # Mask Reset Register
+        .equ    DMA2_MCMR,      DMA2_BASE + 15 * DMA2_STRIDE    # Multi-Channel Mask Register
+
+# ---- DS1501 registers ------------------------------------------------------
         .equ    RTC1_SEC,       RTC1_BASE + 0 * RTC1_STRIDE     # Seconds (BCD Encoded)
         .equ    RTC1_MIN,       RTC1_BASE + 1 * RTC1_STRIDE     # Minutes    
         .equ    RTC1_HR,        RTC1_BASE + 2 * RTC1_STRIDE     # Hours    
