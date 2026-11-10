@@ -2,14 +2,14 @@
 # boot.s - minimal 8086 bootstrap ROM (GNU as, Intel syntax)
 #
 # Memory map assumed:
-#   RAM  0x00000-0x0FFFF (64KB)   (IVT lives at 0x00000-0x003FF)
-#   ROM  0xFC000-0xFFFFF (16KB)   (reset vector at 0xFFFF0)
+#   RAM  0x00000-0x1FFFF (128KB)        (IVT lives at 0x00000-0x003FF)
+#   ROM  0xFC000-0xFFFFF (16KB)         (reset vector at 0xFFFF0)
 # I/O:
 #   8237 DMA Controller 1 at 0x0000 - 0x001F
 #   8237 DMA Controller 2 at 0x0020 - 0x003F
 #   8259A Interrupt Controller 1 at 0x0040 - 0x005F
 #   8259A Interrupt Controller 2 at 0x0060 - 0x007F
-#   8253 Timer at 0x0080 - 0x0083
+#   8254 Timer at 0x0080 - 0x0083
 #   TBD Real Time Clock at 0x00A0 - 0x00BF
 #   8250 UART 1 at 0x00C0 - 0x00DF
 #   8250 UART 2 at 0x00E0 - 0x00FF
@@ -26,6 +26,7 @@
 
         .intel_syntax noprefix
         .code16
+        .include                "constants.s"
 
 # ---- hardware configuration ------------------------------------------------
 #
@@ -235,5 +236,5 @@ reset:
         .word   start
         .word   0xFC00
 
-        .org 0x3FFF                     # pad image to exactly 16384 bytes
+        .org 0x3FFF                                             # pad image to exactly 16384 bytes
         .byte   0xFF
